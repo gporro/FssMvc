@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link type="text/css" rel="stylesheet" href="themes/bluesky/skin.css" />
+</h:head>
+<h:body>
+	<center>
+		<p:panel header="Login Form">
+			<h:form>
+				<p:panelGrid cellpadding="2" columns="2">
+					<h:outputLabel for="#{userMB.username}" value="UserName">
+						<p:inputText label="UserName" value="#{userMB.username}"></p:inputText>
+						<h:outputLabel for="#{userMB.password}" value="Password">
+							<h:inputSecret value="#{userMB.password}"></h:inputSecret>
+							<h:commandButton action="#{userMB.login}" type="submit"
+								value="Login"></h:commandButton>
+						</h:outputLabel>
+					</h:outputLabel>
+				</p:panelGrid>
+			</h:form>
+		</p:panel>
+	</center>
+
+</h:body>
+</html>

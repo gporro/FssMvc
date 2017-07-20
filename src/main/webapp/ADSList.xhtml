@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+<h:body>
+	<h2>ADS List</h2>
+	<center>
+		//#{adsList.populateADSList()}
+	</center>
+
+	<h:form>
+		<p:growl id="messages" />
+
+		<p:menubar>
+			<p:submenu label="Home" icon="ui-icon-home">
+				<p:menuitem value="Home" action="#{menuView.showPage}">
+					<f:param name="pageId" value="home" />
+				</p:menuitem>
+				<p:separator />
+				<p:menuitem value="Quit" url="#" />
+			</p:submenu>
+			<p:submenu label="File" icon="ui-icon-document">
+				<p:submenu label="ADS List" icon="ui-icon-contact">
+					<p:menuitem value="Project" action="#{menuView.showPage}">
+						<f:param name="pageId" value="ADSList" />
+					</p:menuitem>
+					<p:menuitem value="Other" url="#" />
+				</p:submenu>
+			</p:submenu>
+
+			<p:submenu label="Actions" icon="ui-icon-gear">
+				<p:submenu label="Create DataBase" icon="ui-icon-newwin">
+					<p:menuitem value="XMLImport" action="#{menuView.showPage}"
+						icon="ui-icon-arrowthickstop-1-n" update="messages" ajax="false">
+						<f:param name="pageId" value="XSLImport" />
+					</p:menuitem>
+				</p:submenu>
+			</p:submenu>
+
+			<p:menuitem value="Quit" url="localhost:8080/Fss/login.xhtml"
+				icon="ui-icon-close" />
+
+			<f:facet name="options">
+				<p:inputText style="margin-right:10px" placeholder="Search" />
+				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink"
+					action="#{menuView.showPage}">
+					<f:param name="pageId" value="logout" />
+				</p:commandButton>
+			</f:facet>
+		</p:menubar>
+	</h:form>
+
+	<center>
+		<h:form enctype="multipart/form-data">
+
+			<p:dataTable var="ads" value="#{adsList.adsList}">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{ads.id}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Pubblicato" />
+					</f:facet>
+					<h:outputText value="#{ads.published}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Città" />
+					</f:facet>
+					<h:outputText value="#{ads.ad_city}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Titolo" />
+					</f:facet>
+					<h:outputText value="#{ads.ad_headline}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Descrizione" />
+					</f:facet>
+					<h:outputText value="#{ads.ad_text}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Prezzo" />
+					</f:facet>
+					<h:outputText value="#{ads.ad_price}" />
+				</p:column>
+			</p:dataTable>
+
+			<p:growl id="messages" showDetail="true" />
+		</h:form>
+	</center>
+
+</h:body>
+</html>
+
